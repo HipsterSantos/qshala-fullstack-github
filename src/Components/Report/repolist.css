@@ -1,0 +1,8 @@
+.qshala-grid-view{
+    display: grid;
+    align-items: center;
+    justify-content:center;
+    grid-template-columns: repeat(3,200px);
+    grid-template-rows: 50px;
+    margin: 0 auto;
+}

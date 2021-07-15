@@ -1,11 +1,15 @@
-import react,{ useState, useEffect } from 'react'; 
+import react,{ useState, useEffect,useRef} from 'react'; 
 import './SearchBar.css';
-const SearchBar = ()=> { 
+const SearchBar = ({sendingToMain})=> { 
+    const [toSearch,setToSearch] = useState('');
+    const makeFetch = ()=>{
+        sendingToMain(toSearch)
+    }
     return (<>
     <div>
         <div className="embeded-search">
-            <input type="text" placeholder="Find out public repos of specific user ..."/>
-            <button type="button">Search</button>
+            <input onChange={e=>setToSearch(e.target.value)}type="text" placeholder="Find out public repos of specific user ..."/>
+            <button onClick={makeFetch} type="button">Search</button>
         </div>
     </div>
     </> );

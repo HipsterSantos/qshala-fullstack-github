@@ -1,16 +1,18 @@
 import React, {useState,useEffect,useContext} from 'react';
 import SearchBar from '../Components/Search/SearchBar';
-import ReposList from '../Components/Report/RepoDialog';
+import ReposList from '../Components/Report/RepoList';
 import {Spinner} from '../Components/Spiner';
 import './main.css';
-const fetcherContext = React.createContext({ })
+export const fetcherContext = React.createContext({ })
 const Main = ()=>{
-    const [loading,setLoading]  = useState();
+    const [loading,setLoading]  = useState(true);
+    const [value,setValue] = useState();
+    console.log('current value is ',value);
     return (
      <>
-     <fetcherContext.Provider value={""}>
+     <fetcherContext.Provider value={value}>
          <div className="main-content">
-             <SearchBar/>
+             <SearchBar sendingToMain={e=>setValue(e)}/>
              {loading?<ReposList/>:
              <Spinner/>}
          </div>
