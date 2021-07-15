@@ -1,7 +1,8 @@
 import React, {useState,useEffect,useContext} from 'react';
-import SearchBar from '../Components/SearchBar';
-import ReposList from '../Components/RepoList';
+import SearchBar from '../Components/Search/SearchBar';
+import ReposList from '../Components/Report/RepoDialog';
 import {Spinner} from '../Components/Spiner';
+import './main.css';
 const fetcherContext = React.createContext({ })
 const Main = ()=>{
     const [loading,setLoading]  = useState();
@@ -13,7 +14,6 @@ const Main = ()=>{
              {loading?<ReposList/>:
              <Spinner/>}
          </div>
-       <h2>Welcome to github fetch user </h2>
      </fetcherContext.Provider>
      </>
 

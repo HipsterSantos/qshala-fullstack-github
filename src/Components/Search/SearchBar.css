@@ -1,0 +1,25 @@
+.embeded-search{
+    display:flex;
+    height:50px;
+    margin-bottom: 3em;
+}
+.embeded-search input{
+    width: 600px;
+    border:none;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    border-radius:5px;
+    padding-left:1em;
+    outline:none;
+    position:relative;
+    z-index:223;
+}
+.embeded-search button{
+    border:none; 
+    background:rgb(82, 80, 216);
+    color:#fff;
+    width:100px;
+    left:-7px;
+    border-radius:5px;
+    position:relative;
+    z-index: 225;
+}
