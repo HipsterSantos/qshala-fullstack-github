@@ -12,10 +12,9 @@ const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
-export default function RepoDialog() {
-  
-  console.log('current user is ===  ',value);
-  const [open, setOpen] = React.useState(false);
+export default function RepoDialog({canOpen}) {
+console.log('can open ',canOpen);
+  const [open, setOpen] = React.useState(canOpen);
 
   const handleClickOpen = () => {
     setOpen(true);
