@@ -10,6 +10,7 @@ export default function RepoList(props) {
   const value = useContext(fetcherContext);
   const [openDialog,setOpenDialog]  = useState(false);
   // console.log('Dialog status ',openDialog);
+  const collection= [1,23,3,4,54,5];
   return (
     <>
     <div className="qshala-grid-view">
@@ -17,25 +18,15 @@ export default function RepoList(props) {
       <li>Author</li>
       <li>Fallowers</li>
     </div>
+    {collection.map(val=>(
     <div onClick={()=>setOpenDialog(val=>!val)} className="table-body">
       <li className="li">Repos URI value </li>
       <li className="li">Author value</li>
       <li className="li">Company name value</li>
     </div>
-
-    <div onClick={()=>setOpenDialog(val=>!val)} className="table-body">
-      <li className="li">Repos URI value </li>
-      <li className="li">Author value</li>
-      <li className="li">Company name value</li>
-    </div>
-
-    <div onClick={()=>setOpenDialog(val=>!val)} className="table-body">
-      <li className="li">Repos URI value </li>
-      <li className="li">Author value</li>
-      <li className="li">Company name value</li>
-    </div>
-
-   
+    
+    )
+    )}
    <RepoDialog singleData="" canOpen={openDialog}/>
     </>
   );
