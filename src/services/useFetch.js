@@ -1,16 +1,18 @@
 import react,{useEffect,useState} from 'react'; 
 
-const Fetcher = ({ op }, { url }) => {
+const Fetcher = (url) => {
     const [{ data, loading }, setData] = useState({ data: {}, loading: true });
-    Retrieve(url, setData);
-
+    useEffect(async () => {
+         fetch(url.toString())
+         .then(val=>val.json())
+         .then(val=>{
+            console.log('val here ',val);
+             setData({ data: val, loading: false });
+         });
+    }, [url]);
     return [data, loading];
 };
-export const useFetch  = Fetcher;
 
-function Retrieve(url, setData) {
-    useEffect(async () => {
-        let response = await fetch(url);
-        setData({ data: response, loading: false });
-    }, [url]);
-}
+
+
+export default Fetcher;

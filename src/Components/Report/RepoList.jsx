@@ -4,16 +4,18 @@ import { DataGrid } from '@material-ui/data-grid';
 import {fetcherContext } from '../../Pages/Main';
 import './repolist.css';
 import {default as RepoDialog} from './RepoDialog';
-export default function RepoList() {
+export default function RepoList(props) {
+  let {repos,data} = props.data;
+  console.log('all repos all data',repos,data);
   const value = useContext(fetcherContext);
   const [openDialog,setOpenDialog]  = useState(false);
   // console.log('Dialog status ',openDialog);
   return (
     <>
     <div className="qshala-grid-view">
-      <li>Repos URI </li>
+      <li>Number of repos</li>
       <li>Author</li>
-      <li>Company name</li>
+      <li>Fallowers</li>
     </div>
     <div onClick={()=>setOpenDialog(val=>!val)} className="table-body">
       <li className="li">Repos URI value </li>
@@ -21,8 +23,20 @@ export default function RepoList() {
       <li className="li">Company name value</li>
     </div>
 
+    <div onClick={()=>setOpenDialog(val=>!val)} className="table-body">
+      <li className="li">Repos URI value </li>
+      <li className="li">Author value</li>
+      <li className="li">Company name value</li>
+    </div>
+
+    <div onClick={()=>setOpenDialog(val=>!val)} className="table-body">
+      <li className="li">Repos URI value </li>
+      <li className="li">Author value</li>
+      <li className="li">Company name value</li>
+    </div>
+
    
-   <RepoDialog canOpen={openDialog}/>
+   <RepoDialog singleData="" canOpen={openDialog}/>
     </>
   );
 }

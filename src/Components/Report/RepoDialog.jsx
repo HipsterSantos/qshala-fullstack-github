@@ -1,5 +1,5 @@
 import react from 'react'; 
-import React,{useContext} from 'react';
+import React,{useContext,useEffect,useState} from 'react';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
@@ -12,10 +12,15 @@ const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
-export default function RepoDialog({canOpen}) {
+export default function RepoDialog({canOpen},{singleData}) {
 console.log('can open ',canOpen);
   const [open, setOpen] = React.useState(canOpen);
-
+  const [singleValue,setSingleValue] = useState(singleData);
+  useEffect( ()=>{
+    
+      handleClickOpen();
+    
+  },[canOpen])
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -26,9 +31,9 @@ console.log('can open ',canOpen);
 
   return (
     <div>
-      <Button variant="outlined" color="primary" onClick={handleClickOpen}>
+      {/* <Button variant="outlined" color="primary" onClick={handleClickOpen}>
         Slide in alert dialog
-      </Button>
+      </Button> */}
       <Dialog
         open={open}
         TransitionComponent={Transition}
@@ -37,24 +42,25 @@ console.log('can open ',canOpen);
         aria-labelledby="alert-dialog-slide-title"
         aria-describedby="alert-dialog-slide-description"
       >
-        <DialogTitle id="alert-dialog-slide-title">{"Use Google's location service?"}</DialogTitle>
+        <DialogTitle id="alert-dialog-slide-title">{"Total commits of this repository"}</DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-slide-description">
-            Let Google help apps determine location. This means sending anonymous location data to
-            Google, even when no apps are running.
+            Here you can check the last commits 
           </DialogContentText>
           <div>
-              <h3> just to let you know that dialog content can be anything
-                  but nothing .
-              </h3>
+              <div>
+                <p>User</p>
+                <p>Starts </p>
+              </div>
+              <div>
+              <p>Total Commmits </p>
+              </div>
           </div>
         </DialogContent>
         <DialogActions>
+         
           <Button onClick={handleClose} color="primary">
-            Disagree
-          </Button>
-          <Button onClick={handleClose} color="primary">
-            Agree
+            Cancel
           </Button>
         </DialogActions>
       </Dialog>
